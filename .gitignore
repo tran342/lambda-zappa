@@ -105,4 +105,5 @@ ENV/
 .idea/
 
 # npm dependencies
-node_modules
+node_modules/
+build/
