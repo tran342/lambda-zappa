@@ -106,4 +106,3 @@ ENV/
 
 # npm dependencies
 node_modules/
-build/
