@@ -11,5 +11,6 @@ export default new Router({
       name: 'RiskTypeView',
       component: RiskTypeView
     }
-  ]
+  ],
+  mode: 'history'
 })

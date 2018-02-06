@@ -14,8 +14,8 @@ class RiskTypeTests(APITestCase):
         d2 = DataFieldFactory(is_required=False, field_type=FIELD_TYPE.number)
         d3 = DataFieldFactory(is_required=True, field_type=FIELD_TYPE.date)
         d4 = DataFieldFactory(is_required=True, field_type=FIELD_TYPE.enum,
-                              enum_values=json.dumps({'automobiles': 'Automobiles',
-                                                      'houses': 'Houses'}))
+                              enum_values=json.dumps([{'key': 'automobiles', 'value': 'Automobiles'},
+                                                      {'key': 'houses', 'value': 'Houses'}]))
 
         RiskTypeFactory(id=1, fields=[d1, d2, d3, d4])
         RiskTypeFactory(id=2, fields=[d1, d4])
@@ -32,6 +32,11 @@ class RiskTypeTests(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         risk_type = response.json()
         self.assertEqual(risk_type['id'], 1)
+
+    def test_get_risk_type_not_found(self):
+        url = reverse('risktype-detail', kwargs={'pk': 3})
+        response = self.client.get(url, format='json')
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_get_risk_type_field(self):
         url = reverse('risktype-detail', kwargs={'pk': 1})

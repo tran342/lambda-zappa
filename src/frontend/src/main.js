@@ -8,7 +8,7 @@ import store from './store'
 
 Vue.use(VueResource)
 Vue.config.productionTip = false
-Vue.http.options.root = 'http://localhost:8000/api/'
+Vue.http.options.root = process.env.API_HOST
 
 /* eslint-disable no-new */
 new Vue({
