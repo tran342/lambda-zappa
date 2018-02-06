@@ -3,8 +3,7 @@ matrix:
     - language: python
       virtualenv:
         system_site_packages: true
-      python:
-        - "2.7"
+      python: 2.7
 
       install:
         - pip install -r requirements.txt
@@ -14,8 +13,7 @@ matrix:
         - python ./src/backend/manage.py test --settings=conf.test
         - flake8
     - language: node_js
-      node_js:
-        - "8"
+      node_js: 8
       cache:
         directories:
           - ./src/frontend/node_modules
