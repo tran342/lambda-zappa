@@ -1,4 +1,4 @@
-from rest_framework import viewsets, mixins, serializers
+from rest_framework import viewsets, serializers
 
 from api.models import RiskType, DataField
 
