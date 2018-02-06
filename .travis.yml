@@ -9,4 +9,5 @@ install:
 
 script:
   - python ./src/backend/manage.py makemigrations --check --dry-run --settings=conf.test || echo "Missing migrations."
+  - python ./src/backend/manage.py test --settings=conf.test
   - flake8
