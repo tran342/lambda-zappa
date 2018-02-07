@@ -14,6 +14,8 @@ matrix:
         - python manage.py makemigrations --check --dry-run --settings=conf.test || echo "Missing migrations."
         - python manage.py test --settings=conf.test
         - flake8
+      after_success:
+        - zappa update dev
       deploy:
         - provider: script
           skip_cleanup: true
