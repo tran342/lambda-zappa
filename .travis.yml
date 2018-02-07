@@ -1,16 +1,13 @@
 matrix:
   include:
     - language: python
-      addons:
-          apt:
-            packages:
-              - libssl1.0.0
       virtualenv:
         system_site_packages: true
       python: 2.7
       before_install:
         - bash ./creds.sh
       install:
+        - pip install pyOpenSSL ndg-httpsclient pyasn1
         - pip install -r requirements.txt
 
       script:
@@ -18,8 +15,6 @@ matrix:
         - python manage.py makemigrations --check --dry-run --settings=conf.test || echo "Missing migrations."
         - python manage.py test --settings=conf.test
         - flake8
-      after_success:
-        - zappa update dev
       deploy:
         - provider: script
           skip_cleanup: true
