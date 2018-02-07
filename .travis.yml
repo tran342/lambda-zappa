@@ -4,22 +4,33 @@ matrix:
       virtualenv:
         system_site_packages: true
       python: 2.7
-
+      before_install:
+        - ./ecr_credentials.sh
       install:
         - pip install -r requirements.txt
 
       script:
-        - python ./src/backend/manage.py makemigrations --check --dry-run --settings=conf.test || echo "Missing migrations."
-        - python ./src/backend/manage.py test --settings=conf.test
+        - cd $TRAVIS_BUILD_DIR/src/backend
+        - python manage.py makemigrations --check --dry-run --settings=conf.test || echo "Missing migrations."
+        - python manage.py test --settings=conf.test
         - flake8
+      deploy:
+      - provider: script
+        skip_cleanup: true
+        script:
+          - cd $TRAVIS_BUILD_DIR/src/backend
+          - zappa update dev
+          - zappa manage dev "collectstatic --noinput --settings=conf.staging"
+        on:
+          branch: master
     - language: node_js
       node_js: 8
       cache:
         directories:
-          - ./src/frontend/node_modules
+          - $TRAVIS_BUILD_DIR/src/frontend/node_modules
 
       install:
-        - cd ./src/frontend
+        - cd $TRAVIS_BUILD_DIR/src/frontend
         - yarn install
       script:
         - npm run build
