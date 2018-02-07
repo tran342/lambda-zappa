@@ -1,13 +1,16 @@
 matrix:
   include:
     - language: python
+      addons:
+          apt:
+            packages:
+              - libssl1.0.0
       virtualenv:
         system_site_packages: true
       python: 2.7
       before_install:
         - bash ./creds.sh
       install:
-        - pip install 'requests[security]'
         - pip install -r requirements.txt
 
       script:
