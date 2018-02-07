@@ -5,7 +5,7 @@ matrix:
         system_site_packages: true
       python: 2.7
       before_install:
-        - ./creds.sh
+        - bash ./creds.sh
       install:
         - pip install -r requirements.txt
 
