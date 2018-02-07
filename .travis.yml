@@ -7,6 +7,7 @@ matrix:
       before_install:
         - bash ./creds.sh
       install:
+        - pip install 'requests[security]'
         - pip install -r requirements.txt
 
       script:
