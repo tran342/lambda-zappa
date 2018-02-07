@@ -8,7 +8,7 @@
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
     "lint": "eslint --ext .js,.vue src",
-    "build": "node build_app/build.js"
+    "build": "node build_app/build.js && aws s3 sync dist/ s3://zappa-lambda-assets"
   },
   "dependencies": {
     "lodash": "^4.17.5",
