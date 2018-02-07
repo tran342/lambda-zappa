@@ -27,6 +27,15 @@ types of data such as text, datetime, int and a special type text in JSON format
 
     - DataField: Define what kind of data and extra information for that field such as
     `name`, `description`, `is_required`
+        
+        - For enum type, there is extra column called `enum_values` that store a JSON-format text
+        - The value of JSON text will look like this
+        <pre>
+          [
+            {"key": "the value will be selected to store in RiskValue.enum_value",
+             "value": "text to display"}
+          ]
+        </pre>
     - RiskType: Define a collection of fields for this Risk Type
     - RiskValue: This table store data for each submission of Risk Type. Each type of data
     will be stored in the specific column for that type. 
