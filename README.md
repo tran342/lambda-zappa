@@ -41,7 +41,7 @@ types of data such as text, datetime, int and a special type text in JSON format
     
 - Get a Risk Type:
 
-<pre>risk-types/{id}</pre>
+<pre>risk-types/{id}/</pre>
 
 - Admin Page: https://qkm0v73prh.execute-api.ap-southeast-1.amazonaws.com/dev/admin/
 
