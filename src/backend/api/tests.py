@@ -61,6 +61,8 @@ class RiskTypeTests(APITestCase):
         risk_type = response.json()
         self.assertEqual(len(risk_type['fields']), 4)
 
-        self.assertEqual(len(risk_type['fields'][3]['read_enum_values'].keys()), 2)
-        self.assertEqual(risk_type['fields'][3]['read_enum_values']['automobiles'], 'Automobiles')
-        self.assertEqual(risk_type['fields'][3]['read_enum_values']['houses'], 'Houses')
+        self.assertEqual(len(risk_type['fields'][3]['read_enum_values']), 2)
+        self.assertEqual(risk_type['fields'][3]['read_enum_values'][0]['key'], 'automobiles')
+        self.assertEqual(risk_type['fields'][3]['read_enum_values'][0]['value'], 'Automobiles')
+        self.assertEqual(risk_type['fields'][3]['read_enum_values'][1]['key'], 'houses')
+        self.assertEqual(risk_type['fields'][3]['read_enum_values'][1]['value'], 'Houses')
