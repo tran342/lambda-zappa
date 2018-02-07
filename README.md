@@ -1,5 +1,7 @@
 # Challenge
 
+[![Build Status](https://travis-ci.org/tran342/lambda-zappa.svg?branch=master)](https://travis-ci.org/tran342/lambda-zappa)
+
 ## Technology Stacks
 
 ### Back End
