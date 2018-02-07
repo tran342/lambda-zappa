@@ -25,7 +25,8 @@ matrix:
       cache:
         directories:
           - $TRAVIS_BUILD_DIR/src/frontend/node_modules
-
+      before_install:
+        - pip install awscli
       install:
         - cd $TRAVIS_BUILD_DIR/src/frontend
         - yarn install
